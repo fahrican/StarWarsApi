@@ -27,7 +27,7 @@ android {
 
 def lifeCycleExtensionsVersion = '1.1.1'
 def supportVersion = '28.0.0'
-def retrofitVersion = '2.3.0'
+def retrofitVersion = '2.4.0'
 def daggerVersion = '2.13'
 def glideVersion = '4.8.0'
 def mockitoVersion = '2.11.0'
@@ -49,7 +49,7 @@ dependencies {
 
     // Retrofit 2
     implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
-    implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-moshi:$retrofitVersion"
     implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion"
 
     //RxJava 2
