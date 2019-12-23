@@ -2,7 +2,10 @@ package com.example.starwarsapi.adapter
 
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.android.synthetic.main.item_species.view.*
 
 class SpeciesAdapter() : RecyclerView.Adapter<SpeciesViewHolder>() {
 
@@ -23,4 +26,8 @@ class SpeciesAdapter() : RecyclerView.Adapter<SpeciesViewHolder>() {
 
 class SpeciesViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
 
+    val speciesCardView: CardView by lazy { view.card_view }
+    val speciesName: TextView by lazy { view.species_name }
+    val speciesAVGLifespan: TextView by lazy { view.species_average_lifespan }
+    val speciesLanguage: TextView by lazy { view.species_language }
 }
