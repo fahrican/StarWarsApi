@@ -21,33 +21,22 @@ class SpeciesAdapter(
         return SpeciesViewHolder(itemView)
     }
 
-    override fun getItemCount(): Int {
-        return speciesList.size
-    }
+    override fun getItemCount(): Int = speciesList.size
 
     override fun onBindViewHolder(holder: SpeciesViewHolder, position: Int) {
-        val species: Species = speciesList[position]
-        setSpeciesViewHolderProperties(holder, species)
+        holder.bind(speciesList[position])
         holder.speciesCardView.setOnClickListener {
             Toast.makeText(
                 holder.itemView.context,
-                "Name: ${holder.speciesName}",
+                "Name: ${speciesList[position].name}",
                 Toast.LENGTH_LONG
             ).show()
         }
     }
 
-    private fun setSpeciesViewHolderProperties(
-        speciesViewHolder: SpeciesViewHolder,
-        species: Species
-    ) {
-        speciesViewHolder.speciesName.text = species.name
-        speciesViewHolder.speciesAVGLifespan.text = species.average_lifespan
-        speciesViewHolder.speciesLanguage.text = species.language
-    }
-
-    private fun setSpeciesList(listOfSpecies: ArrayList<Species>) {
-        speciesList = listOfSpecies
+    private fun setSpeciesList(listOfSpecies: List<Species>) {
+        speciesList.clear()
+        speciesList.addAll(listOfSpecies)
         notifyDataSetChanged()
     }
 }
@@ -55,7 +44,13 @@ class SpeciesAdapter(
 class SpeciesViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
 
     val speciesCardView: CardView by lazy { view.card_view }
-    val speciesName: TextView by lazy { view.species_name }
-    val speciesAVGLifespan: TextView by lazy { view.species_average_lifespan }
-    val speciesLanguage: TextView by lazy { view.species_language }
+    private val speciesName: TextView by lazy { view.species_name }
+    private val speciesAVGLifespan: TextView by lazy { view.species_average_lifespan }
+    private val speciesLanguage: TextView by lazy { view.species_language }
+
+    fun bind(species: Species) {
+        speciesName.text = species.name
+        speciesAVGLifespan.text = species.average_lifespan
+        speciesLanguage.text = species.language
+    }
 }
