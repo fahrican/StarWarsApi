@@ -37,21 +37,8 @@ class SpeciesViewModel : ViewModel() {
             starWarsService.loadSpecies()
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribeWith(object : DisposableSingleObserver<List<Species>>() {
-
-                    override fun onSuccess(value: List<Species>?) {
-                        species.value = value
-                        loadingError.value = false
-                        loadingProcess.value = false
-
-                    }
-
-                    override fun onError(e: Throwable?) {
-                        loadingProcess.value = false
-                        loadingError.value = true
-                    }
-                }
-                )
+                .flatMap { Observable.fromIterable(it.results) }
+                .subscribeWith(createSpeciesObserver())
         )
     }
 }
