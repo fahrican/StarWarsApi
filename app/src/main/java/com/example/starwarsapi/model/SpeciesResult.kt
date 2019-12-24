@@ -1,8 +1,8 @@
 package com.example.starwarsapi.model
 
-data class TopResult(
+data class SpeciesResult(
     val count: Int,
     val next: String,
     val previous: Any,
-    val results: List<Any>
+    val results: List<Species>
 )
