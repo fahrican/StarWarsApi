@@ -54,7 +54,7 @@ class MainActivity : AppCompatActivity() {
                     main_recycler_view.visibility = View.GONE
 
                 } else {
-                    View.GONE
+                    species_list_progress.visibility = View.GONE
                 }
             }
         })
