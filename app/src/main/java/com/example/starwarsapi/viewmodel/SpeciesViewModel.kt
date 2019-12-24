@@ -50,11 +50,9 @@ class SpeciesViewModel : ViewModel() {
     private fun createSpeciesObserver(): DisposableObserver<Species> {
         return object : DisposableObserver<Species>() {
 
-            override fun onNext(value: Species?) {
-                if (value != null) {
-                    if (!listOfSpecies.contains(value)) {
-                        listOfSpecies.add(value)
-                    }
+            override fun onNext(value: Species) {
+                if (!listOfSpecies.contains(value)) {
+                    listOfSpecies.add(value)
                 }
             }
 
@@ -65,10 +63,10 @@ class SpeciesViewModel : ViewModel() {
                 Log.v("onComplete", "Success list of: ${listOfSpecies.size}")
             }
 
-            override fun onError(e: Throwable?) {
+            override fun onError(e: Throwable) {
                 loadingProcess.value = false
                 loadingError.value = true
-                Log.e("onError", "Species error: ${e?.message}")
+                Log.e("onError", "Species error: ${e.message}")
             }
         }
     }
