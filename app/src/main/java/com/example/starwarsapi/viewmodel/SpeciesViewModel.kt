@@ -41,4 +41,30 @@ class SpeciesViewModel : ViewModel() {
                 .subscribeWith(createSpeciesObserver())
         )
     }
+
+    private fun createSpeciesObserver(): DisposableObserver<Species> {
+        return object : DisposableObserver<Species>() {
+
+            override fun onNext(value: Species?) {
+                if (value != null) {
+                    if (!listOfSpecies.contains(value)) {
+                        listOfSpecies.add(value)
+                    }
+                }
+            }
+
+            override fun onComplete() {
+                species.value = listOfSpecies
+                loadingError.value = false
+                loadingProcess.value = false
+                Log.v("onComplete", "Success list of: ${listOfSpecies.size}")
+            }
+
+            override fun onError(e: Throwable?) {
+                loadingProcess.value = false
+                loadingError.value = true
+                Log.e("onError", "Species error: ${e?.message}")
+            }
+        }
+    }
 }
