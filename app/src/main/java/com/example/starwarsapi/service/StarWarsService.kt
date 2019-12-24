@@ -1,8 +1,8 @@
 package com.example.starwarsapi.service
 
 import com.example.starwarsapi.api_endpoint.StarWarsApi
-import com.example.starwarsapi.model.Species
-import io.reactivex.Single
+import com.example.starwarsapi.model.SpeciesResult
+import io.reactivex.Observable
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.moshi.MoshiConverterFactory
@@ -21,7 +21,7 @@ class StarWarsService {
             .create(StarWarsApi::class.java)
     }
 
-    fun loadSpecies(): Single<List<Species>> {
+    fun loadSpecies(): Observable<SpeciesResult> {
         return starWarsApi.getSpecies()
     }
 }
