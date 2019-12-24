@@ -1,18 +1,21 @@
 package com.example.starwarsapi.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.starwarsapi.model.Species
 import com.example.starwarsapi.service.StarWarsService
+import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.observers.DisposableSingleObserver
+import io.reactivex.observers.DisposableObserver
 import io.reactivex.schedulers.Schedulers
 
 class SpeciesViewModel : ViewModel() {
 
     private val starWarsService by lazy { StarWarsService() }
     private val disposable by lazy { CompositeDisposable() }
+    private val listOfSpecies: ArrayList<Species> by lazy { ArrayList<Species>() }
 
     val species = MutableLiveData<List<Species>>()
     val loadingError = MutableLiveData<Boolean>()
