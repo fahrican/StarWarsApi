@@ -67,8 +67,8 @@ dependencies {
     //Everything testing related
     testImplementation 'junit:junit:4.12'
     testImplementation "org.mockito:mockito-inline:$mockitoVersion"
-    testImplementation 'android.arch.core:core-testing:1.1.1'
+    testImplementation "android.arch.core:core-testing:$lifeCycleExtensionsVersion"
 
-    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation "androidx.test.ext:junit:$lifeCycleExtensionsVersion"
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 }
