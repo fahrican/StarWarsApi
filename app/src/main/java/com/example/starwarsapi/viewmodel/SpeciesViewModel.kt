@@ -13,13 +13,18 @@ import io.reactivex.schedulers.Schedulers
 
 class SpeciesViewModel : ViewModel() {
 
+    private val TAG by lazy { "SpeciesViewModel" }
     private val starWarsService by lazy { StarWarsService() }
     private val disposable by lazy { CompositeDisposable() }
-    private val listOfSpecies: ArrayList<Species> by lazy { ArrayList<Species>() }
+    private val listOfSpecies by lazy { ArrayList<Species>() }
 
     val species = MutableLiveData<List<Species>>()
     val loadingError = MutableLiveData<Boolean>()
     val loadingProcess = MutableLiveData<Boolean>()
+
+    init {
+        Log.i(TAG, "init")
+    }
 
     override fun onCleared() {
         super.onCleared()
