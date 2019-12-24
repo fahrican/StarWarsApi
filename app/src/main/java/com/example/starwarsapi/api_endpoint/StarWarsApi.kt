@@ -6,6 +6,6 @@ import retrofit2.http.GET
 
 interface StarWarsApi {
 
-    @GET("api/species/?format=json")
+    @GET("api/species")
     fun getSpecies(): Single<List<Species>>
 }
