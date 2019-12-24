@@ -50,7 +50,7 @@ class SpeciesViewHolder(private val view: View) : RecyclerView.ViewHolder(view) 
 
     fun bind(species: Species) {
         speciesName.text = species.name
-        speciesAVGLifespan.text = species.average_lifespan
-        speciesLanguage.text = species.language
+        speciesAVGLifespan.text = "lifespan: ${species.average_lifespan} years"
+        speciesLanguage.text = "language: ${species.language}"
     }
 }
