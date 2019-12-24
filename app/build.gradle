@@ -33,9 +33,7 @@ def lifeCycleExtensionsVersion = '1.1.1'
 def androidxVersion = '1.1.0'
 def retrofitVersion = '2.4.0'
 def daggerVersion = '2.13'
-def glideVersion = '4.8.0'
 def mockitoVersion = '2.11.0'
-def rxJavaVersion = '2.0.1'
 def firstStableVersion = '1.0.0'
 
 dependencies {
@@ -57,7 +55,7 @@ dependencies {
     implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion"
 
     //RxJava 2
-    implementation "io.reactivex.rxjava2:rxjava:$rxJavaVersion"
+    implementation "io.reactivex.rxjava2:rxjava:2.2.16"
     implementation "io.reactivex.rxjava2:rxandroid:2.1.1"
 
     // Dagger 2
@@ -65,9 +63,6 @@ dependencies {
     implementation "com.google.dagger:dagger-android-support:$daggerVersion"
     kapt "com.google.dagger:dagger-compiler:$daggerVersion"
     kapt "com.google.dagger:dagger-android-processor:$daggerVersion"
-
-    // Glide for image loading from the web
-    implementation "com.github.bumptech.glide:glide:$glideVersion"
 
     //Everything testing related
     testImplementation 'junit:junit:4.12'
