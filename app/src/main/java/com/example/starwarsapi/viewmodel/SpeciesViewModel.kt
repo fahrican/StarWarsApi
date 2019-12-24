@@ -31,7 +31,7 @@ class SpeciesViewModel : ViewModel() {
     }
 
     private fun fetchSpecies() {
-        loadingProcess.value = false
+        loadingProcess.value = true
 
         disposable.add(
             starWarsService.loadSpecies()
@@ -55,8 +55,8 @@ class SpeciesViewModel : ViewModel() {
 
             override fun onComplete() {
                 species.value = listOfSpecies
-                loadingError.value = false
                 loadingProcess.value = false
+                loadingError.value = false
                 Log.v("onComplete", "Success list of: ${listOfSpecies.size}")
             }
 
