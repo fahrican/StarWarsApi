@@ -27,10 +27,12 @@ class MainActivity : AppCompatActivity() {
             layoutManager = LinearLayoutManager(context)
             adapter = speciesAdapter
         }
-    }
 
-    override fun onResume() {
-        super.onResume()
+        main_swipe_refresh_layout.setOnRefreshListener {
+            main_swipe_refresh_layout.isRefreshing = false
+            viewModel.refresh()
+        }
+
         observeViewModel()
     }
 
