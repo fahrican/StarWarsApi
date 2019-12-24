@@ -36,7 +36,10 @@ class MainActivity : AppCompatActivity() {
 
     private fun observeViewModel() {
         viewModel.species.observe(this, Observer { allSpecies ->
-            allSpecies.let { speciesAdapter.setSpeciesList(it) }
+            allSpecies.let {
+                main_recycler_view.visibility = View.VISIBLE
+                speciesAdapter.setSpeciesList(it)
+            }
         })
 
         viewModel.loadingError.observe(this, Observer { isError ->
