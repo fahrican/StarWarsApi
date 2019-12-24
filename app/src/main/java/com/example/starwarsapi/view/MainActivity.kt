@@ -2,6 +2,8 @@ package com.example.starwarsapi.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.starwarsapi.R
@@ -25,5 +27,33 @@ class MainActivity : AppCompatActivity() {
             layoutManager = LinearLayoutManager(context)
             adapter = speciesAdapter
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        observeViewModel()
+    }
+
+    private fun observeViewModel() {
+        viewModel.species.observe(this, Observer { allSpecies ->
+            allSpecies.let { speciesAdapter.setSpeciesList(it) }
+        })
+
+        viewModel.loadingError.observe(this, Observer { isError ->
+            isError.let { species_list_error.visibility = if (it) View.VISIBLE else View.GONE }
+        })
+
+        viewModel.loadingProcess.observe(this, Observer { isLoading ->
+            isLoading.let {
+                if (it) {
+                    species_list_progress.visibility = View.VISIBLE
+                    species_list_error.visibility = View.GONE
+                    main_recycler_view.visibility = View.GONE
+
+                } else {
+                    View.GONE
+                }
+            }
+        })
     }
 }
