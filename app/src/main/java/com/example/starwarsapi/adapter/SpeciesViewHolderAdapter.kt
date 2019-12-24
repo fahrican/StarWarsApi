@@ -34,7 +34,7 @@ class SpeciesAdapter(
         }
     }
 
-    private fun setSpeciesList(listOfSpecies: List<Species>) {
+    fun setSpeciesList(listOfSpecies: List<Species>) {
         speciesList.clear()
         speciesList.addAll(listOfSpecies)
         notifyDataSetChanged()
