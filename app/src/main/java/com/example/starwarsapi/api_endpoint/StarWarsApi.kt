@@ -1,11 +1,11 @@
 package com.example.starwarsapi.api_endpoint
 
-import com.example.starwarsapi.model.Species
-import io.reactivex.Single
+import com.example.starwarsapi.model.SpeciesResult
+import io.reactivex.Observable
 import retrofit2.http.GET
 
 interface StarWarsApi {
 
     @GET("api/species")
-    fun getSpecies(): Single<List<Species>>
+    fun getSpecies(): Observable<SpeciesResult>
 }
