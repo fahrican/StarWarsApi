@@ -48,14 +48,7 @@ class StarWarsApiModule {
     }
 
     @Provides
-    fun provideListOfSpecies(): ArrayList<Species> {
-        return ArrayList()
-    }
-
-    @Provides
     fun provideSpeciesAdapter(): SpeciesAdapter {
         return SpeciesAdapter(arrayListOf())
     }
-
-
 }
