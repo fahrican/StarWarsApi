@@ -24,8 +24,11 @@ class SpeciesViewModel : ViewModel() {
     private val listOfSpecies by lazy { ArrayList<Species>() }
 
     val speciesLiveData = MutableLiveData<List<Species>>()
-    val errorLiveData = MutableLiveData<Boolean>()
-    val progressLiveData = MutableLiveData<Boolean>()
+
+    @Inject
+    lateinit var errorLiveData: MutableLiveData<Boolean>
+    @Inject
+    lateinit var progressLiveData: MutableLiveData<Boolean>
 
     init {
         Log.i(TAG, "init")
