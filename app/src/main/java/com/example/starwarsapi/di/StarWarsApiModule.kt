@@ -1,6 +1,7 @@
 package com.example.starwarsapi.di
 
 import androidx.lifecycle.MutableLiveData
+import com.example.starwarsapi.adapter.SpeciesAdapter
 import com.example.starwarsapi.api_endpoint.StarWarsApi
 import com.example.starwarsapi.model.Species
 import com.example.starwarsapi.service.StarWarsService
@@ -49,6 +50,11 @@ class StarWarsApiModule {
     @Provides
     fun provideListOfSpecies(): ArrayList<Species> {
         return ArrayList()
+    }
+
+    @Provides
+    fun provideSpeciesAdapter(): SpeciesAdapter {
+        return SpeciesAdapter(arrayListOf())
     }
 
 

@@ -9,19 +9,24 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.starwarsapi.R
 import com.example.starwarsapi.adapter.SpeciesAdapter
+import com.example.starwarsapi.di.DaggerStarWarsApiComponent
 import com.example.starwarsapi.viewmodel.SpeciesViewModel
 import kotlinx.android.synthetic.main.activity_main.*
+import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
 
     private val TAG by lazy { "MainActivity" }
     lateinit var viewModel: SpeciesViewModel
-    private val speciesAdapter by lazy { SpeciesAdapter(arrayListOf()) }
+    @Inject
+    lateinit var speciesAdapter: SpeciesAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         Log.i(TAG, "onCreate() start")
+
+        DaggerStarWarsApiComponent.create().inject(this)
 
         viewModel = ViewModelProviders.of(this).get(SpeciesViewModel::class.java)
         viewModel.refresh()
