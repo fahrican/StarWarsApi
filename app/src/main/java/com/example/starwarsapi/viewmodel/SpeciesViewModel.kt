@@ -24,8 +24,8 @@ class SpeciesViewModel : ViewModel() {
     private val listOfSpecies by lazy { ArrayList<Species>() }
 
     val speciesLiveData = MutableLiveData<List<Species>>()
-    val loadingError = MutableLiveData<Boolean>()
-    val loadingProcess = MutableLiveData<Boolean>()
+    val errorLiveData = MutableLiveData<Boolean>()
+    val progressLiveData = MutableLiveData<Boolean>()
 
     init {
         Log.i(TAG, "init")
@@ -42,7 +42,7 @@ class SpeciesViewModel : ViewModel() {
     }
 
     private fun fetchSpecies() {
-        loadingProcess.value = true
+        progressLiveData.value = true
 
         disposable.add(
             starWarsService.loadSpecies()
@@ -64,14 +64,14 @@ class SpeciesViewModel : ViewModel() {
 
             override fun onComplete() {
                 speciesLiveData.value = listOfSpecies
-                loadingProcess.value = false
-                loadingError.value = false
+                progressLiveData.value = false
+                errorLiveData.value = false
                 Log.v("onComplete", "Success list of: ${listOfSpecies.size}")
             }
 
             override fun onError(e: Throwable) {
-                loadingProcess.value = false
-                loadingError.value = true
+                progressLiveData.value = false
+                errorLiveData.value = true
                 Log.e("onError", "Species error: ${e.message}")
             }
         }

@@ -51,11 +51,11 @@ class MainActivity : AppCompatActivity() {
             }
         })
 
-        viewModel.loadingError.observe(this, Observer { isError ->
+        viewModel.errorLiveData.observe(this, Observer { isError ->
             isError.let { species_list_error.visibility = if (it) View.VISIBLE else View.GONE }
         })
 
-        viewModel.loadingProcess.observe(this, Observer { isLoading ->
+        viewModel.progressLiveData.observe(this, Observer { isLoading ->
             isLoading.let {
                 if (it) {
                     species_list_progress.visibility = View.VISIBLE
