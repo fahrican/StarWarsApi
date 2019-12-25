@@ -21,8 +21,8 @@ class SpeciesViewModel : ViewModel() {
     lateinit var starWarsService: StarWarsService
     @Inject
     lateinit var disposable: CompositeDisposable
-    private val listOfSpecies by lazy { ArrayList<Species>() }
-
+    @Inject
+    lateinit var listOfSpecies: ArrayList<Species>
     @Inject
     lateinit var speciesLiveData: MutableLiveData<List<Species>>
     @Inject

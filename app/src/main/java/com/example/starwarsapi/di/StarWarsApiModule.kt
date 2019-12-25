@@ -46,5 +46,10 @@ class StarWarsApiModule {
         return CompositeDisposable()
     }
 
+    @Provides
+    fun provideListOfSpecies(): ArrayList<Species> {
+        return ArrayList()
+    }
+
 
 }
