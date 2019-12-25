@@ -2,6 +2,7 @@ package com.example.starwarsapi.di
 
 import androidx.lifecycle.MutableLiveData
 import com.example.starwarsapi.api_endpoint.StarWarsApi
+import com.example.starwarsapi.model.Species
 import com.example.starwarsapi.service.StarWarsService
 import dagger.Module
 import dagger.Provides
@@ -31,6 +32,11 @@ class StarWarsApiModule {
 
     @Provides
     fun provideBooleanLiveData(): MutableLiveData<Boolean> {
+        return MutableLiveData()
+    }
+
+    @Provides
+    fun provideSpeciesListLiveData(): MutableLiveData<List<Species>> {
         return MutableLiveData()
     }
 }

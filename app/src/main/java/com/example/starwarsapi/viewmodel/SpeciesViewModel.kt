@@ -23,8 +23,8 @@ class SpeciesViewModel : ViewModel() {
     private val disposable by lazy { CompositeDisposable() }
     private val listOfSpecies by lazy { ArrayList<Species>() }
 
-    val speciesLiveData = MutableLiveData<List<Species>>()
-
+    @Inject
+    lateinit var speciesLiveData: MutableLiveData<List<Species>>
     @Inject
     lateinit var errorLiveData: MutableLiveData<Boolean>
     @Inject
