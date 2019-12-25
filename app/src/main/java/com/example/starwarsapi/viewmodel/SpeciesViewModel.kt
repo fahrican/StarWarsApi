@@ -6,10 +6,9 @@ import androidx.lifecycle.ViewModel
 import com.example.starwarsapi.di.DaggerStarWarsApiComponent
 import com.example.starwarsapi.model.Species
 import com.example.starwarsapi.service.StarWarsService
-import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.observers.DisposableObserver
+import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
@@ -51,31 +50,25 @@ class SpeciesViewModel : ViewModel() {
             starWarsService.loadSpecies()
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .flatMap { Observable.fromIterable(it.results) }
+                .map { it.results }
                 .subscribeWith(createSpeciesObserver())
         )
     }
 
-    private fun createSpeciesObserver(): DisposableObserver<Species> {
-        return object : DisposableObserver<Species>() {
-
-            override fun onNext(value: Species) {
-                if (!listOfSpecies.contains(value)) {
-                    listOfSpecies.add(value)
-                }
-            }
-
-            override fun onComplete() {
-                speciesLiveData.value = listOfSpecies
-                progressLiveData.value = false
-                errorLiveData.value = false
-                Log.v("onComplete", "Success list of: ${listOfSpecies.size}")
-            }
+    private fun createSpeciesObserver(): DisposableSingleObserver<List<Species>> {
+        return object : DisposableSingleObserver<List<Species>>() {
 
             override fun onError(e: Throwable) {
                 progressLiveData.value = false
                 errorLiveData.value = true
                 Log.e("onError", "Species error: ${e.message}")
+            }
+
+            override fun onSuccess(speciesList: List<Species>) {
+                speciesLiveData.value = speciesList
+                progressLiveData.value = false
+                errorLiveData.value = false
+                Log.v("onComplete", "Success list of: ${listOfSpecies.size}")
             }
         }
     }

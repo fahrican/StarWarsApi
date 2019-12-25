@@ -3,7 +3,7 @@ package com.example.starwarsapi.service
 import com.example.starwarsapi.api_endpoint.StarWarsApi
 import com.example.starwarsapi.di.DaggerStarWarsApiComponent
 import com.example.starwarsapi.model.SpeciesResult
-import io.reactivex.Observable
+import io.reactivex.Single
 import javax.inject.Inject
 
 class StarWarsService {
@@ -15,7 +15,7 @@ class StarWarsService {
         DaggerStarWarsApiComponent.create().inject(this)
     }
 
-    fun loadSpecies(): Observable<SpeciesResult> {
+    fun loadSpecies(): Single<SpeciesResult> {
         return starWarsApi.getSpecies()
     }
 }
