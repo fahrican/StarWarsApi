@@ -21,8 +21,6 @@ class SpeciesViewModel : ViewModel() {
     @Inject
     lateinit var disposable: CompositeDisposable
     @Inject
-    lateinit var listOfSpecies: ArrayList<Species>
-    @Inject
     lateinit var speciesLiveData: MutableLiveData<List<Species>>
     @Inject
     lateinit var errorLiveData: MutableLiveData<Boolean>
@@ -68,7 +66,7 @@ class SpeciesViewModel : ViewModel() {
                 speciesLiveData.value = speciesList
                 progressLiveData.value = false
                 errorLiveData.value = false
-                Log.v("onComplete", "Success list of: ${listOfSpecies.size}")
+                Log.v("onComplete", "Success list of: ${speciesList.size}")
             }
         }
     }
