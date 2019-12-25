@@ -1,6 +1,7 @@
 package com.example.starwarsapi.di
 
 import com.example.starwarsapi.api_endpoint.StarWarsApi
+import com.example.starwarsapi.service.StarWarsService
 import dagger.Module
 import dagger.Provides
 import retrofit2.Retrofit
@@ -20,5 +21,10 @@ class StarWarsApiModule {
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .build()
             .create(StarWarsApi::class.java)
+    }
+
+    @Provides
+    fun provideStarWarsService(): StarWarsService {
+        return StarWarsService()
     }
 }

@@ -3,6 +3,7 @@ package com.example.starwarsapi.viewmodel
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.starwarsapi.di.DaggerStarWarsApiComponent
 import com.example.starwarsapi.model.Species
 import com.example.starwarsapi.service.StarWarsService
 import io.reactivex.Observable
@@ -10,11 +11,15 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableObserver
 import io.reactivex.schedulers.Schedulers
+import javax.inject.Inject
 
 class SpeciesViewModel : ViewModel() {
 
     private val TAG by lazy { "SpeciesViewModel" }
-    private val starWarsService by lazy { StarWarsService() }
+
+    @Inject
+    lateinit var starWarsService: StarWarsService
+
     private val disposable by lazy { CompositeDisposable() }
     private val listOfSpecies by lazy { ArrayList<Species>() }
 
@@ -24,6 +29,7 @@ class SpeciesViewModel : ViewModel() {
 
     init {
         Log.i(TAG, "init")
+        DaggerStarWarsApiComponent.create().inject(this)
     }
 
     override fun onCleared() {
