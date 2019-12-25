@@ -38,7 +38,7 @@
                 android:id="@+id/species_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Yoda's species"
+                android:text="@{species.name}"
                 android:textColor="@android:color/black"
                 android:textSize="18sp"
                 android:textStyle="bold"
