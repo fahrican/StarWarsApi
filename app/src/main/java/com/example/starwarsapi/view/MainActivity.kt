@@ -44,7 +44,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun observeViewModel() {
-        viewModel.species.observe(this, Observer { allSpecies ->
+        viewModel.speciesLiveData.observe(this, Observer { allSpecies ->
             allSpecies.let {
                 main_recycler_view.visibility = View.VISIBLE
                 speciesAdapter.setSpeciesList(it)

@@ -23,7 +23,7 @@ class SpeciesViewModel : ViewModel() {
     private val disposable by lazy { CompositeDisposable() }
     private val listOfSpecies by lazy { ArrayList<Species>() }
 
-    val species = MutableLiveData<List<Species>>()
+    val speciesLiveData = MutableLiveData<List<Species>>()
     val loadingError = MutableLiveData<Boolean>()
     val loadingProcess = MutableLiveData<Boolean>()
 
@@ -63,7 +63,7 @@ class SpeciesViewModel : ViewModel() {
             }
 
             override fun onComplete() {
-                species.value = listOfSpecies
+                speciesLiveData.value = listOfSpecies
                 loadingProcess.value = false
                 loadingError.value = false
                 Log.v("onComplete", "Success list of: ${listOfSpecies.size}")
