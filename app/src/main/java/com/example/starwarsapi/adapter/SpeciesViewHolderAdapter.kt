@@ -1,34 +1,37 @@
 package com.example.starwarsapi.adapter
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import android.widget.Toast
-import androidx.cardview.widget.CardView
+import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.starwarsapi.R
+import com.example.starwarsapi.databinding.ItemSpeciesBinding
 import com.example.starwarsapi.model.Species
-import kotlinx.android.synthetic.main.item_species.view.*
 
 class SpeciesAdapter(
     private var speciesList: ArrayList<Species>
 ) : RecyclerView.Adapter<SpeciesViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SpeciesViewHolder {
-        val itemView: View = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_species, parent, false)
-        return SpeciesViewHolder(itemView)
+        val itemSpeciesBinding: ItemSpeciesBinding = DataBindingUtil.inflate(
+            LayoutInflater.from(parent.context),
+            R.layout.item_species,
+            parent,
+            false
+        )
+        return SpeciesViewHolder(itemSpeciesBinding)
     }
 
     override fun getItemCount(): Int = speciesList.size
 
     override fun onBindViewHolder(holder: SpeciesViewHolder, position: Int) {
-        holder.bind(speciesList[position])
-        holder.speciesCardView.setOnClickListener {
+        val currentSpecies = speciesList[position]
+        holder.itemSpeciesBinding.species = currentSpecies
+        holder.itemSpeciesBinding.cardView.setOnClickListener {
             Toast.makeText(
                 holder.itemView.context,
-                "Name: ${speciesList[position].name}",
+                "Name: ${currentSpecies.name}",
                 Toast.LENGTH_LONG
             ).show()
         }
@@ -41,16 +44,8 @@ class SpeciesAdapter(
     }
 }
 
-class SpeciesViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
+class SpeciesViewHolder(speciesBinding: ItemSpeciesBinding) :
+    RecyclerView.ViewHolder(speciesBinding.root) {
 
-    val speciesCardView: CardView by lazy { view.card_view }
-    private val speciesName: TextView by lazy { view.species_name }
-    private val speciesAVGLifespan: TextView by lazy { view.species_average_lifespan }
-    private val speciesLanguage: TextView by lazy { view.species_language }
-
-    fun bind(species: Species) {
-        speciesName.text = species.name
-        speciesAVGLifespan.text = "lifespan: ${species.average_lifespan} years"
-        speciesLanguage.text = "language: ${species.language}"
-    }
+    val itemSpeciesBinding: ItemSpeciesBinding = speciesBinding
 }
