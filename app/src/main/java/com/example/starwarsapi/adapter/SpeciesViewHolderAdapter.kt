@@ -44,4 +44,5 @@ class SpeciesAdapter(
     }
 }
 
-class SpeciesViewHolder(val itemSpeciesBinding: ItemSpeciesBinding) : RecyclerView.ViewHolder(itemSpeciesBinding.root)
+class SpeciesViewHolder(val itemSpeciesBinding: ItemSpeciesBinding) :
+    RecyclerView.ViewHolder(itemSpeciesBinding.root)
