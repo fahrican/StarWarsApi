@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
 
         main_recycler_view.apply {
             layoutManager = LinearLayoutManager(context)
-            adapter = speciesAdapter
+            adapter = viewModel.speciesAdapter
         }
 
         main_swipe_refresh_layout.setOnRefreshListener {
@@ -48,7 +48,7 @@ class MainActivity : AppCompatActivity() {
         viewModel.speciesLiveData.observe(this, Observer { allSpecies ->
             allSpecies.let {
                 main_recycler_view.visibility = View.VISIBLE
-                speciesAdapter.setSpeciesList(it)
+                viewModel.speciesAdapter.setSpeciesList(it)
             }
         })
 
