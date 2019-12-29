@@ -3,6 +3,7 @@ package com.example.starwarsapi.viewmodel
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.starwarsapi.adapter.SpeciesAdapter
 import com.example.starwarsapi.di.DaggerStarWarsApiComponent
 import com.example.starwarsapi.model.Species
 import com.example.starwarsapi.service.StarWarsService
@@ -16,6 +17,8 @@ class SpeciesViewModel : ViewModel() {
 
     private val TAG by lazy { "SpeciesViewModel" }
 
+    @Inject
+    lateinit var speciesAdapter: SpeciesAdapter
     @Inject
     lateinit var starWarsService: StarWarsService
     @Inject
