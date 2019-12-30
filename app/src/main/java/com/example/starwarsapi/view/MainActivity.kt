@@ -8,7 +8,6 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.starwarsapi.R
-import com.example.starwarsapi.di.DaggerStarWarsApiComponent
 import com.example.starwarsapi.viewmodel.SpeciesViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -21,8 +20,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         Log.i(TAG, "onCreate() start")
-
-        DaggerStarWarsApiComponent.create().inject(this)
 
         viewModel = ViewModelProviders.of(this).get(SpeciesViewModel::class.java)
         viewModel.refresh()
