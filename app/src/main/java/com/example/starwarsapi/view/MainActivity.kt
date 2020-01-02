@@ -33,15 +33,11 @@ class MainActivity : AppCompatActivity() {
             main_swipe_refresh_layout.isRefreshing = false
             viewModel.refresh()
         }
+
+        observeLiveDataProperties()
     }
 
-    override fun onResume() {
-        super.onResume()
-        Log.i(TAG, "onResume() start")
-        observeViewModel()
-    }
-
-    private fun observeViewModel() {
+    private fun observeLiveDataProperties() {
         viewModel.speciesLiveData.observe(this, Observer { allSpecies ->
             allSpecies.let {
                 main_recycler_view.visibility = View.VISIBLE
