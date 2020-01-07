@@ -35,7 +35,7 @@ android {
 def lifeCycleExtensionsVersion = '1.1.1'
 def androidxVersion = '1.1.0'
 def retrofitVersion = '2.4.0'
-def daggerVersion = '2.13'
+def daggerVersion = '2.25.4'
 def firstStableVersion = '1.0.0'
 
 dependencies {
