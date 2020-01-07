@@ -38,18 +38,18 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun observeLiveDataProperties() {
-        viewModel.speciesLiveData.observe(this, Observer { allSpecies ->
+        viewModel.speciesListMLD.observe(this, Observer { allSpecies ->
             allSpecies.let {
                 main_recycler_view.visibility = View.VISIBLE
                 viewModel.speciesAdapter.setSpeciesList(it)
             }
         })
 
-        viewModel.errorLiveData.observe(this, Observer { isError ->
+        viewModel.isErrorMLD.observe(this, Observer { isError ->
             isError.let { species_list_error.visibility = if (it) View.VISIBLE else View.GONE }
         })
 
-        viewModel.progressLiveData.observe(this, Observer { isLoading ->
+        viewModel.inProgressMLD.observe(this, Observer { isLoading ->
             isLoading.let {
                 if (it) {
                     species_list_progress.visibility = View.VISIBLE

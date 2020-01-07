@@ -24,11 +24,11 @@ class SpeciesViewModel : ViewModel() {
     @Inject
     lateinit var disposable: CompositeDisposable
     @Inject
-    lateinit var speciesLiveData: MutableLiveData<List<Species>>
+    lateinit var speciesListMLD: MutableLiveData<List<Species>>
     @Inject
-    lateinit var errorLiveData: MutableLiveData<Boolean>
+    lateinit var isErrorMLD: MutableLiveData<Boolean>
     @Inject
-    lateinit var progressLiveData: MutableLiveData<Boolean>
+    lateinit var inProgressMLD: MutableLiveData<Boolean>
 
     init {
         Log.i(TAG, "init")
@@ -58,18 +58,18 @@ class SpeciesViewModel : ViewModel() {
         return object : DisposableSingleObserver<List<Species>>() {
 
             override fun onError(e: Throwable) {
-                progressLiveData.value = true
-                errorLiveData.value = true
+                inProgressMLD.value = true
+                isErrorMLD.value = true
                 Log.e("onError", "Species error: ${e.message}")
-                progressLiveData.value = false
+                inProgressMLD.value = false
             }
 
             override fun onSuccess(speciesList: List<Species>) {
-                progressLiveData.value = true
-                speciesLiveData.value = speciesList
-                errorLiveData.value = false
+                inProgressMLD.value = true
+                speciesListMLD.value = speciesList
+                isErrorMLD.value = false
                 Log.v("onComplete", "Success list of: ${speciesList.size}")
-                progressLiveData.value = false
+                inProgressMLD.value = false
             }
         }
     }
