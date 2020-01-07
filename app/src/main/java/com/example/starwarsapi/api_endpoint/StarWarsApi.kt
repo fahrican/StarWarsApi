@@ -7,5 +7,5 @@ import retrofit2.http.GET
 interface StarWarsApi {
 
     @GET("api/species")
-    fun getSpecies(): Single<SpeciesResult>
+    fun fetchSpeciesResult(): Single<SpeciesResult>
 }

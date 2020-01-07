@@ -15,7 +15,7 @@ class NetworkService {
         DaggerStarWarsApiComponent.create().inject(this)
     }
 
-    fun loadSpecies(): Single<SpeciesResult> {
-        return starWarsApi.getSpecies()
+    fun loadSpeciesResult(): Single<SpeciesResult> {
+        return starWarsApi.fetchSpeciesResult()
     }
 }

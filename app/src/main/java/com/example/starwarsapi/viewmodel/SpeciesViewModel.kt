@@ -41,14 +41,14 @@ class SpeciesViewModel : ViewModel() {
     }
 
     fun refresh() {
-        fetchSpecies()
+        makeSpeciesWebCall()
     }
 
-    private fun fetchSpecies() {
+    private fun makeSpeciesWebCall() {
         progressLiveData.value = true
 
         disposable.add(
-            networkService.loadSpecies()
+            networkService.loadSpeciesResult()
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .map { it.results }
