@@ -4,7 +4,9 @@ import com.example.starwarsapi.repository.SpeciesRepository
 import com.example.starwarsapi.service.NetworkService
 import com.example.starwarsapi.viewmodel.SpeciesViewModel
 import dagger.Component
+import javax.inject.Singleton
 
+@Singleton
 @Component(modules = [ApiModule::class])
 interface ApiComponent {
 

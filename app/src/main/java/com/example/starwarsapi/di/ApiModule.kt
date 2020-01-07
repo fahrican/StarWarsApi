@@ -12,12 +12,14 @@ import io.reactivex.disposables.CompositeDisposable
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.moshi.MoshiConverterFactory
+import javax.inject.Singleton
 
 @Module
 class ApiModule {
 
     private val BASE_URL = "https://swapi.co/"
 
+    @Singleton
     @Provides
     fun provideStarWarsApi(): StarWarsApi {
         return Retrofit.Builder()
