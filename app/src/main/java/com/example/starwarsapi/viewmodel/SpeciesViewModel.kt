@@ -4,7 +4,7 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.starwarsapi.adapter.SpeciesAdapter
-import com.example.starwarsapi.di.DaggerStarWarsApiComponent
+import com.example.starwarsapi.di.DaggerApiComponent
 import com.example.starwarsapi.model.Species
 import com.example.starwarsapi.service.NetworkService
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -32,7 +32,7 @@ class SpeciesViewModel : ViewModel() {
 
     init {
         Log.i(TAG, "init")
-        DaggerStarWarsApiComponent.create().inject(this)
+        DaggerApiComponent.create().inject(this)
     }
 
     override fun onCleared() {

@@ -4,8 +4,8 @@ import com.example.starwarsapi.service.NetworkService
 import com.example.starwarsapi.viewmodel.SpeciesViewModel
 import dagger.Component
 
-@Component(modules = [StarWarsApiModule::class])
-interface StarWarsApiComponent {
+@Component(modules = [ApiModule::class])
+interface ApiComponent {
 
     fun inject(service: NetworkService)
 
