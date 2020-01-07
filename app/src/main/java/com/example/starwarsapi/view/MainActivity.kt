@@ -24,6 +24,12 @@ class MainActivity : AppCompatActivity() {
         viewModel = ViewModelProviders.of(this).get(SpeciesViewModel::class.java)
         viewModel.refresh()
 
+        setUpViews()
+
+        observeLiveDataProperties()
+    }
+
+    private fun setUpViews() {
         main_recycler_view.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = viewModel.speciesAdapter
@@ -33,8 +39,6 @@ class MainActivity : AppCompatActivity() {
             main_swipe_refresh_layout.isRefreshing = false
             viewModel.refresh()
         }
-
-        observeLiveDataProperties()
     }
 
     private fun observeLiveDataProperties() {
