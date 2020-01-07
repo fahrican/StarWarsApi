@@ -45,8 +45,6 @@ class SpeciesViewModel : ViewModel() {
     }
 
     private fun makeSpeciesWebCall() {
-        progressLiveData.value = true
-
         disposable.add(
             networkService.loadSpeciesResult()
                 .subscribeOn(Schedulers.newThread())
@@ -60,16 +58,18 @@ class SpeciesViewModel : ViewModel() {
         return object : DisposableSingleObserver<List<Species>>() {
 
             override fun onError(e: Throwable) {
-                progressLiveData.value = false
+                progressLiveData.value = true
                 errorLiveData.value = true
                 Log.e("onError", "Species error: ${e.message}")
+                progressLiveData.value = false
             }
 
             override fun onSuccess(speciesList: List<Species>) {
+                progressLiveData.value = true
                 speciesLiveData.value = speciesList
-                progressLiveData.value = false
                 errorLiveData.value = false
                 Log.v("onComplete", "Success list of: ${speciesList.size}")
+                progressLiveData.value = false
             }
         }
     }
