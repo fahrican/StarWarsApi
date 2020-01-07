@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import com.example.starwarsapi.adapter.SpeciesAdapter
 import com.example.starwarsapi.di.DaggerStarWarsApiComponent
 import com.example.starwarsapi.model.Species
-import com.example.starwarsapi.service.StarWarsService
+import com.example.starwarsapi.service.NetworkService
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableSingleObserver
@@ -20,7 +20,7 @@ class SpeciesViewModel : ViewModel() {
     @Inject
     lateinit var speciesAdapter: SpeciesAdapter
     @Inject
-    lateinit var starWarsService: StarWarsService
+    lateinit var networkService: NetworkService
     @Inject
     lateinit var disposable: CompositeDisposable
     @Inject
@@ -48,7 +48,7 @@ class SpeciesViewModel : ViewModel() {
         progressLiveData.value = true
 
         disposable.add(
-            starWarsService.loadSpecies()
+            networkService.loadSpecies()
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .map { it.results }

@@ -6,7 +6,7 @@ import com.example.starwarsapi.model.SpeciesResult
 import io.reactivex.Single
 import javax.inject.Inject
 
-class StarWarsService {
+class NetworkService {
 
     @Inject
     lateinit var starWarsApi: StarWarsApi

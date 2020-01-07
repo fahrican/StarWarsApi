@@ -4,7 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import com.example.starwarsapi.adapter.SpeciesAdapter
 import com.example.starwarsapi.api_endpoint.StarWarsApi
 import com.example.starwarsapi.model.Species
-import com.example.starwarsapi.service.StarWarsService
+import com.example.starwarsapi.service.NetworkService
 import dagger.Module
 import dagger.Provides
 import io.reactivex.disposables.CompositeDisposable
@@ -28,8 +28,8 @@ class StarWarsApiModule {
     }
 
     @Provides
-    fun provideStarWarsService(): StarWarsService {
-        return StarWarsService()
+    fun provideStarWarsService(): NetworkService {
+        return NetworkService()
     }
 
     @Provides
