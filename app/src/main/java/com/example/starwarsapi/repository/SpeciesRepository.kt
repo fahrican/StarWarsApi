@@ -4,9 +4,7 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.example.starwarsapi.di.DaggerApiComponent
 import com.example.starwarsapi.model.Species
-import com.example.starwarsapi.model.SpeciesResult
 import com.example.starwarsapi.service.NetworkService
-import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
@@ -27,8 +25,8 @@ class SpeciesRepository {
         DaggerApiComponent.create().inject(this)
     }
 
-    fun callSpecies(): DisposableSingleObserver<List<Species>>  {
-       return networkService.loadSpeciesResult().subscribeOn(Schedulers.newThread())
+    fun makeSpeciesWebCall(): DisposableSingleObserver<List<Species>> {
+        return networkService.loadSpeciesResult().subscribeOn(Schedulers.newThread())
             .observeOn(AndroidSchedulers.mainThread())
             .map { it.results }
             .subscribeWith(createSpeciesObserver())

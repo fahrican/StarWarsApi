@@ -1,17 +1,11 @@
 package com.example.starwarsapi.viewmodel
 
 import android.util.Log
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.starwarsapi.adapter.SpeciesAdapter
 import com.example.starwarsapi.di.DaggerApiComponent
-import com.example.starwarsapi.model.Species
 import com.example.starwarsapi.repository.SpeciesRepository
-import com.example.starwarsapi.service.NetworkService
-import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.observers.DisposableSingleObserver
-import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
 class SpeciesViewModel : ViewModel() {
@@ -36,10 +30,10 @@ class SpeciesViewModel : ViewModel() {
     }
 
     fun refresh() {
-        makeSpeciesWebCall()
+        getSpeciesFromRepo()
     }
 
-    private fun makeSpeciesWebCall() {
-        disposable.add(speciesRepository.callSpecies())
+    private fun getSpeciesFromRepo() {
+        disposable.add(speciesRepository.makeSpeciesWebCall())
     }
 }
