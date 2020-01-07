@@ -50,7 +50,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun observeInProgress() {
-        val inProgressLD: LiveData<Boolean> = viewModel.inProgressMLD
+        val inProgressLD: LiveData<Boolean> = viewModel.speciesRepository.inProgressMLD
         inProgressLD.observe(this, Observer { isLoading ->
             isLoading.let {
                 if (it) {
@@ -65,14 +65,14 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun observeIsError() {
-        val isErrorLD: LiveData<Boolean> = viewModel.isErrorMLD
+        val isErrorLD: LiveData<Boolean> = viewModel.speciesRepository.isErrorMLD
         isErrorLD.observe(this, Observer { isError ->
             isError.let { species_list_error.visibility = if (it) View.VISIBLE else View.GONE }
         })
     }
 
     private fun observeSpeciesList() {
-        val speciesListLD: LiveData<List<Species>> = viewModel.speciesListMLD
+        val speciesListLD: LiveData<List<Species>> = viewModel.speciesRepository.speciesListMLD
         speciesListLD.observe(this, Observer { allSpecies ->
             allSpecies.let {
                 main_recycler_view.visibility = View.VISIBLE
