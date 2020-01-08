@@ -1,5 +1,6 @@
 package com.example.starwarsapi.di
 
+import com.example.starwarsapi.adapter.SpeciesViewHolder
 import com.example.starwarsapi.repository.SpeciesRepository
 import com.example.starwarsapi.service.NetworkService
 import com.example.starwarsapi.viewmodel.SpeciesViewModel
@@ -15,4 +16,6 @@ interface ApiComponent {
     fun inject(speciesRepository: SpeciesRepository)
 
     fun inject(speciesViewModel: SpeciesViewModel)
+
+    fun inject(speciesViewHolder: SpeciesViewHolder)
 }

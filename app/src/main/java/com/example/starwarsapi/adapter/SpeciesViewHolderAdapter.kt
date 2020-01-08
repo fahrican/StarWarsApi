@@ -7,7 +7,10 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.starwarsapi.R
 import com.example.starwarsapi.databinding.ItemSpeciesBinding
+import com.example.starwarsapi.di.DaggerApiComponent
 import com.example.starwarsapi.model.Species
+import com.example.starwarsapi.repository.SpeciesRepository
+import javax.inject.Inject
 
 class SpeciesAdapter(
     private var speciesList: ArrayList<Species>
@@ -44,4 +47,19 @@ class SpeciesAdapter(
 }
 
 class SpeciesViewHolder(val itemSpeciesBinding: ItemSpeciesBinding) :
-    RecyclerView.ViewHolder(itemSpeciesBinding.root)
+    RecyclerView.ViewHolder(itemSpeciesBinding.root) {
+
+    @Inject
+    lateinit var speciesRepository: SpeciesRepository
+    @Inject
+    lateinit var listOfSpecies: ArrayList<Species>
+
+    init {
+        DaggerApiComponent.create().inject(this)
+        listOfSpecies.addAll(speciesRepository.getSpeciesList())
+    }
+
+    fun bind(position: Int) {
+
+    }
+}

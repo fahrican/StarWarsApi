@@ -32,7 +32,6 @@ class SpeciesRepository {
             .subscribeWith(createSpeciesObserver())
     }
 
-
     private fun createSpeciesObserver(): DisposableSingleObserver<List<Species>> {
         return object : DisposableSingleObserver<List<Species>>() {
 
@@ -51,5 +50,9 @@ class SpeciesRepository {
                 inProgressMLD.value = false
             }
         }
+    }
+
+    fun getSpeciesList(): List<Species>? {
+        return speciesListMLD.value
     }
 }
