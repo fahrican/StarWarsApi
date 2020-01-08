@@ -12,6 +12,7 @@ import javax.inject.Inject
 
 class SpeciesRepository {
 
+    lateinit var species: Species
     @Inject
     lateinit var networkService: NetworkService
     @Inject

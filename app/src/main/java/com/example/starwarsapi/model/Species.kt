@@ -1,6 +1,8 @@
 package com.example.starwarsapi.model
 
-data class Species(
+import javax.inject.Inject
+
+data class Species @Inject constructor(
     val average_height: String,
     val average_lifespan: String,
     val classification: String,

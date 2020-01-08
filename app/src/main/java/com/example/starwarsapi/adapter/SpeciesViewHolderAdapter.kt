@@ -26,12 +26,11 @@ class SpeciesAdapter(
     override fun getItemCount(): Int = speciesList.size
 
     override fun onBindViewHolder(holder: SpeciesViewHolder, position: Int) {
-        val currentSpecies = speciesList[position]
-        holder.itemSpeciesBinding.species = currentSpecies
+        holder.itemSpeciesBinding.vm.speciesRepository.species = speciesList[position]
         holder.itemSpeciesBinding.cardView.setOnClickListener {
             Toast.makeText(
                 holder.itemView.context,
-                "Name: ${currentSpecies.name}",
+                "Name: ${speciesList[position].name}",
                 Toast.LENGTH_LONG
             ).show()
         }
