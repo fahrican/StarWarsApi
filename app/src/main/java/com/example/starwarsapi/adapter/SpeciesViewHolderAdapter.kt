@@ -29,7 +29,7 @@ class SpeciesAdapter(
     override fun getItemCount(): Int = speciesList.size
 
     override fun onBindViewHolder(holder: SpeciesViewHolder, position: Int) {
-        holder.itemSpeciesBinding.vm.speciesRepository.species = speciesList[position]
+        holder.itemSpeciesBinding.vm.speciesRepository.getSpecies(position)
         holder.itemSpeciesBinding.cardView.setOnClickListener {
             Toast.makeText(
                 holder.itemView.context,
@@ -49,17 +49,14 @@ class SpeciesAdapter(
 class SpeciesViewHolder(val itemSpeciesBinding: ItemSpeciesBinding) :
     RecyclerView.ViewHolder(itemSpeciesBinding.root) {
 
-    @Inject
+   /* @Inject
     lateinit var speciesRepository: SpeciesRepository
-    @Inject
-    lateinit var listOfSpecies: ArrayList<Species>
 
     init {
         DaggerApiComponent.create().inject(this)
-        listOfSpecies.addAll(speciesRepository.getSpeciesList())
     }
 
     fun bind(position: Int) {
 
-    }
+    }*/
 }

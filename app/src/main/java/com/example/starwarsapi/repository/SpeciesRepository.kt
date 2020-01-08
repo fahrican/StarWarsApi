@@ -20,6 +20,8 @@ class SpeciesRepository {
     lateinit var isErrorMLD: MutableLiveData<Boolean>
     @Inject
     lateinit var inProgressMLD: MutableLiveData<Boolean>
+    @Inject
+    lateinit var listOfSpecies: ArrayList<Species>
 
     init {
         DaggerApiComponent.create().inject(this)
@@ -45,6 +47,7 @@ class SpeciesRepository {
             override fun onSuccess(speciesList: List<Species>) {
                 inProgressMLD.value = true
                 speciesListMLD.value = speciesList
+                listOfSpecies.addAll(speciesList)
                 isErrorMLD.value = false
                 Log.v("onComplete", "Success list of: ${speciesList.size}")
                 inProgressMLD.value = false
@@ -52,7 +55,7 @@ class SpeciesRepository {
         }
     }
 
-    fun getSpeciesList(): List<Species>? {
-        return speciesListMLD.value
+    fun getSpecies(index: Int): Species {
+        return listOfSpecies[index]
     }
 }
