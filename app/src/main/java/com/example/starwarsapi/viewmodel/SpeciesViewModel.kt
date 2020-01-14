@@ -2,7 +2,7 @@ package com.example.starwarsapi.viewmodel
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
-import com.example.starwarsapi.adapter.SpeciesAdapter
+import com.example.starwarsapi.view.adapter.SpeciesAdapter
 import com.example.starwarsapi.di.DaggerApiComponent
 import com.example.starwarsapi.repository.SpeciesRepository
 import io.reactivex.disposables.CompositeDisposable

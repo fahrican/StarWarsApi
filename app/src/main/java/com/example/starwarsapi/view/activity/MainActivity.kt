@@ -1,4 +1,4 @@
-package com.example.starwarsapi.view
+package com.example.starwarsapi.view.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

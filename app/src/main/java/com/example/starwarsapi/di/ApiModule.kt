@@ -1,7 +1,7 @@
 package com.example.starwarsapi.di
 
 import androidx.lifecycle.MutableLiveData
-import com.example.starwarsapi.adapter.SpeciesAdapter
+import com.example.starwarsapi.view.adapter.SpeciesAdapter
 import com.example.starwarsapi.networking.StarWarsApi
 import com.example.starwarsapi.model.Species
 import com.example.starwarsapi.repository.SpeciesRepository

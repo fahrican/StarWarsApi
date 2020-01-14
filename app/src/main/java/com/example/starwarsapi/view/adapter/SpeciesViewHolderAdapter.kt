@@ -1,4 +1,4 @@
-package com.example.starwarsapi.adapter
+package com.example.starwarsapi.view.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
