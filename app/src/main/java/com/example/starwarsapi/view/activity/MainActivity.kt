@@ -10,18 +10,27 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.starwarsapi.R
 import com.example.starwarsapi.data.model.Species
+import com.example.starwarsapi.di.DaggerApiComponent
+import com.example.starwarsapi.view.adapter.SpeciesAdapter
 import com.example.starwarsapi.viewmodel.SpeciesViewModel
 import kotlinx.android.synthetic.main.activity_main.*
+import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
 
     private val TAG by lazy { "MainActivity" }
+
+    @Inject
+    lateinit var speciesAdapter: SpeciesAdapter
+
     private lateinit var viewModel: SpeciesViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         Log.i(TAG, "onCreate() start")
+
+        DaggerApiComponent.create().inject(this)
 
         viewModel = ViewModelProviders.of(this).get(SpeciesViewModel::class.java)
         viewModel.refresh()
@@ -34,7 +43,7 @@ class MainActivity : AppCompatActivity() {
     private fun setUpViews() {
         main_recycler_view.apply {
             layoutManager = LinearLayoutManager(context)
-            adapter = viewModel.speciesAdapter
+            adapter = speciesAdapter
         }
 
         main_swipe_refresh_layout.setOnRefreshListener {
@@ -76,7 +85,7 @@ class MainActivity : AppCompatActivity() {
         speciesListLD.observe(this, Observer { allSpecies ->
             allSpecies.let {
                 main_recycler_view.visibility = View.VISIBLE
-                viewModel.speciesAdapter.setSpeciesList(it)
+                speciesAdapter.setSpeciesList(it)
             }
         })
     }
