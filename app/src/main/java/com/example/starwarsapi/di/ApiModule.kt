@@ -2,10 +2,10 @@ package com.example.starwarsapi.di
 
 import androidx.lifecycle.MutableLiveData
 import com.example.starwarsapi.view.adapter.SpeciesAdapter
-import com.example.starwarsapi.networking.StarWarsApi
-import com.example.starwarsapi.model.Species
-import com.example.starwarsapi.repository.SpeciesRepository
-import com.example.starwarsapi.networking.RetrofitClient
+import com.example.starwarsapi.data.networking.StarWarsApi
+import com.example.starwarsapi.data.model.Species
+import com.example.starwarsapi.data.repository.SpeciesRepository
+import com.example.starwarsapi.data.networking.RetrofitClient
 import dagger.Module
 import dagger.Provides
 import io.reactivex.disposables.CompositeDisposable

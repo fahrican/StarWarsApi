@@ -1,4 +1,4 @@
-package com.example.starwarsapi.model
+package com.example.starwarsapi.data.model
 
 data class SpeciesResult(
     val count: Int,

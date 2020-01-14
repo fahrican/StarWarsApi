@@ -1,7 +1,7 @@
-package com.example.starwarsapi.networking
+package com.example.starwarsapi.data.networking
 
 import com.example.starwarsapi.di.DaggerApiComponent
-import com.example.starwarsapi.model.SpeciesResult
+import com.example.starwarsapi.data.model.SpeciesResult
 import io.reactivex.Single
 import javax.inject.Inject
 

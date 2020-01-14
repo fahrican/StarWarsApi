@@ -7,7 +7,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.starwarsapi.R
 import com.example.starwarsapi.databinding.ItemSpeciesBinding
-import com.example.starwarsapi.model.Species
+import com.example.starwarsapi.data.model.Species
 
 class SpeciesAdapter(
     private var speciesList: ArrayList<Species>

@@ -1,10 +1,10 @@
-package com.example.starwarsapi.repository
+package com.example.starwarsapi.data.repository
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.example.starwarsapi.di.DaggerApiComponent
-import com.example.starwarsapi.model.Species
-import com.example.starwarsapi.networking.RetrofitClient
+import com.example.starwarsapi.data.model.Species
+import com.example.starwarsapi.data.networking.RetrofitClient
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers

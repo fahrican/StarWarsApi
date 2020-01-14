@@ -9,7 +9,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.starwarsapi.R
-import com.example.starwarsapi.model.Species
+import com.example.starwarsapi.data.model.Species
 import com.example.starwarsapi.viewmodel.SpeciesViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 

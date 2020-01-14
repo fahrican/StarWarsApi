@@ -4,7 +4,7 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import com.example.starwarsapi.view.adapter.SpeciesAdapter
 import com.example.starwarsapi.di.DaggerApiComponent
-import com.example.starwarsapi.repository.SpeciesRepository
+import com.example.starwarsapi.data.repository.SpeciesRepository
 import io.reactivex.disposables.CompositeDisposable
 import javax.inject.Inject
 
