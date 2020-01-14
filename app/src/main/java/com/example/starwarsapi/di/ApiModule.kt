@@ -5,7 +5,7 @@ import com.example.starwarsapi.adapter.SpeciesAdapter
 import com.example.starwarsapi.networking.StarWarsApi
 import com.example.starwarsapi.model.Species
 import com.example.starwarsapi.repository.SpeciesRepository
-import com.example.starwarsapi.service.RetrofitClient
+import com.example.starwarsapi.networking.RetrofitClient
 import dagger.Module
 import dagger.Provides
 import io.reactivex.disposables.CompositeDisposable

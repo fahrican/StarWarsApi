@@ -1,4 +1,4 @@
-package com.example.starwarsapi.service
+package com.example.starwarsapi.networking
 
 import com.example.starwarsapi.networking.StarWarsApi
 import com.example.starwarsapi.di.DaggerApiComponent

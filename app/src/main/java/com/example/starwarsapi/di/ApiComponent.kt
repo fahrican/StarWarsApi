@@ -1,7 +1,7 @@
 package com.example.starwarsapi.di
 
 import com.example.starwarsapi.repository.SpeciesRepository
-import com.example.starwarsapi.service.RetrofitClient
+import com.example.starwarsapi.networking.RetrofitClient
 import com.example.starwarsapi.viewmodel.SpeciesViewModel
 import dagger.Component
 import javax.inject.Singleton
