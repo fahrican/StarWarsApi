@@ -5,7 +5,7 @@ import com.example.starwarsapi.adapter.SpeciesAdapter
 import com.example.starwarsapi.networking.StarWarsApi
 import com.example.starwarsapi.model.Species
 import com.example.starwarsapi.repository.SpeciesRepository
-import com.example.starwarsapi.service.NetworkService
+import com.example.starwarsapi.service.RetrofitClient
 import dagger.Module
 import dagger.Provides
 import io.reactivex.disposables.CompositeDisposable
@@ -17,13 +17,11 @@ import javax.inject.Singleton
 @Module
 class ApiModule {
 
-    private val BASE_URL = "https://swapi.co/"
-
     @Singleton
     @Provides
     fun provideStarWarsApi(): StarWarsApi {
         return Retrofit.Builder()
-            .baseUrl(BASE_URL)
+            .baseUrl(RetrofitClient.BASE_URL)
             .addConverterFactory(MoshiConverterFactory.create())
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .build()
@@ -32,8 +30,8 @@ class ApiModule {
 
     @Singleton
     @Provides
-    fun provideStarWarsService(): NetworkService {
-        return NetworkService()
+    fun provideStarWarsService(): RetrofitClient {
+        return RetrofitClient()
     }
 
     @Provides

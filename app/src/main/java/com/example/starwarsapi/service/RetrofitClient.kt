@@ -6,7 +6,11 @@ import com.example.starwarsapi.model.SpeciesResult
 import io.reactivex.Single
 import javax.inject.Inject
 
-class NetworkService {
+class RetrofitClient {
+
+    companion object {
+        val BASE_URL = "https://swapi.co/"
+    }
 
     @Inject
     lateinit var starWarsApi: StarWarsApi

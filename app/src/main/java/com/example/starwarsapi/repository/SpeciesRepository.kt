@@ -4,7 +4,7 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.example.starwarsapi.di.DaggerApiComponent
 import com.example.starwarsapi.model.Species
-import com.example.starwarsapi.service.NetworkService
+import com.example.starwarsapi.service.RetrofitClient
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
@@ -13,7 +13,7 @@ import javax.inject.Inject
 class SpeciesRepository {
 
     @Inject
-    lateinit var networkService: NetworkService
+    lateinit var retrofitClient: RetrofitClient
     @Inject
     lateinit var speciesListMLD: MutableLiveData<List<Species>>
     @Inject
@@ -26,7 +26,7 @@ class SpeciesRepository {
     }
 
     fun makeSpeciesWebCall(): DisposableSingleObserver<List<Species>> {
-        return networkService.loadSpeciesResult().subscribeOn(Schedulers.newThread())
+        return retrofitClient.loadSpeciesResult().subscribeOn(Schedulers.newThread())
             .observeOn(AndroidSchedulers.mainThread())
             .map { it.results }
             .subscribeWith(createSpeciesObserver())
