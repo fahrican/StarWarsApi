@@ -30,7 +30,7 @@ class ApiModule {
 
     @Singleton
     @Provides
-    fun provideStarWarsService(): RetrofitClient {
+    fun provideRetrofitClient(): RetrofitClient {
         return RetrofitClient()
     }
 
