@@ -30,6 +30,7 @@ class ApiModule {
             .create(StarWarsApi::class.java)
     }
 
+    @Singleton
     @Provides
     fun provideStarWarsService(): NetworkService {
         return NetworkService()
