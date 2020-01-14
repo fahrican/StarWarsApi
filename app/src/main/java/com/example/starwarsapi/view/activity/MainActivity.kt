@@ -33,7 +33,6 @@ class MainActivity : AppCompatActivity() {
         DaggerApiComponent.create().inject(this)
 
         viewModel = ViewModelProviders.of(this).get(SpeciesViewModel::class.java)
-        viewModel.refresh()
 
         setUpViews()
 
