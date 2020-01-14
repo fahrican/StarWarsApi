@@ -27,11 +27,7 @@ class SpeciesViewModel : ViewModel() {
         disposable.clear()
     }
 
-    fun refresh() {
-        getSpeciesFromRepo()
-    }
-
-    private fun getSpeciesFromRepo() {
+    fun getSpeciesFromRepo() {
         disposable.add(speciesRepository.makeSpeciesWebCall())
     }
 }

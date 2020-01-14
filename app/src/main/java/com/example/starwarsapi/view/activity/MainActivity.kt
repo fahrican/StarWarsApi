@@ -47,7 +47,7 @@ class MainActivity : AppCompatActivity() {
 
         main_swipe_refresh_layout.setOnRefreshListener {
             main_swipe_refresh_layout.isRefreshing = false
-            viewModel.refresh()
+            viewModel.getSpeciesFromRepo()
         }
     }
 
