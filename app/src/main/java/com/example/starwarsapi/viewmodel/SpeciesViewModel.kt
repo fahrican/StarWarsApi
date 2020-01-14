@@ -19,6 +19,7 @@ class SpeciesViewModel : ViewModel() {
     init {
         Log.i(TAG, "init")
         DaggerApiComponent.create().inject(this)
+        getSpeciesFromRepo()
     }
 
     override fun onCleared() {
